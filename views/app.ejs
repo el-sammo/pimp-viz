@@ -1,4 +1,4 @@
-<div ng-controller="MessageController" id="msm-messenger" ng-cloak>
+<div ng-controller="MessageController" id="pimp-messenger" ng-cloak>
   <alert type="{{alertType}}" ng-show="userMessage" close="close()">
     <strong ng-show="title">{{title}}&nbsp;</strong>
     {{userMessage}}
@@ -7,14 +7,14 @@
 
 <div 
 	ng-cloak 
-	id="msm-main-container" 
+	id="pimp-main-container" 
 	ng-controller="LayoutController"
 >
 	<div 
-		id="msm-header"
+		id="pimp-header"
 	>
 		<div 
-			id="msm-inout"
+			id="pimp-inout"
 		>
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="msm-quicklinks">
+		<div id="pimp-quicklinks">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="row">
@@ -54,31 +54,31 @@
 							</div>
 						</div>
 						<div 
-							class="col-md-1 col-md-offset-1 msm-ql"
+							class="col-md-1 col-md-offset-1 pimp-ql"
 							ng-click="home()"
 						>
 							Home
 						</div>
 						<div 
-							class="col-md-1 msm-ql"
+							class="col-md-1 pimp-ql"
 							ng-click="products()"
 						>
 							Products
 						</div>
 						<div 
-							class="col-md-1 msm-ql"
+							class="col-md-1 pimp-ql"
 							ng-click="installation()"
 						>
 							Installation
 						</div>
 						<div 
-							class="col-md-1 msm-ql"
+							class="col-md-1 pimp-ql"
 							ng-click="pricing()"
 						>
 							Pricing
 						</div>
 						<div 
-							class="col-md-1 msm-ql"
+							class="col-md-1 pimp-ql"
 							ng-click="contact()"
 						>
 							Contact
@@ -89,13 +89,13 @@
 		</div>
 	</div>
 	<div 
-		id="msm-main" 
+		id="pimp-main" 
 		ng-view
 	>
 	</div>
 	<div 
 		ng-cloak
-		id="msm-footer"
+		id="pimp-footer"
 		ng-controller="LayoutController"
 	>
 		<div class="row">
