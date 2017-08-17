@@ -1,0 +1,144 @@
+<div ng-controller="MessageController" id="msm-messenger" ng-cloak>
+  <alert type="{{alertType}}" ng-show="userMessage" close="close()">
+    <strong ng-show="title">{{title}}&nbsp;</strong>
+    {{userMessage}}
+  </alert>
+</div>
+
+<div 
+	ng-cloak 
+	id="msm-main-container" 
+	ng-controller="LayoutController"
+>
+	<div 
+		id="msm-header"
+	>
+		<div 
+			id="msm-inout"
+		>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="row">
+						<div class="col-md-6">
+							&nbsp;
+						</div>
+						<div 
+							class="col-md-2 col-md-offset-2 clickable"
+							ng-click="signUp()"
+						>
+							CREATE ACCOUNT
+						</div>
+						<div 
+							class="col-md-1 bumpRight clickable"
+							ng-click="support()"
+						>
+							SUPPORT
+						</div>
+						<div 
+							class="col-md-1 clickable"
+							ng-click="logIn()"
+						>
+							LOGIN
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="msm-quicklinks">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="row">
+						<div class="col-md-6">
+							<div id="logo">
+								<img src="/images/logo.png">
+							</div>
+						</div>
+						<div 
+							class="col-md-1 col-md-offset-1 msm-ql"
+							ng-click="home()"
+						>
+							Home
+						</div>
+						<div 
+							class="col-md-1 msm-ql"
+							ng-click="products()"
+						>
+							Products
+						</div>
+						<div 
+							class="col-md-1 msm-ql"
+							ng-click="installation()"
+						>
+							Installation
+						</div>
+						<div 
+							class="col-md-1 msm-ql"
+							ng-click="pricing()"
+						>
+							Pricing
+						</div>
+						<div 
+							class="col-md-1 msm-ql"
+							ng-click="contact()"
+						>
+							Contact
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div 
+		id="msm-main" 
+		ng-view
+	>
+	</div>
+	<div 
+		ng-cloak
+		id="msm-footer"
+		ng-controller="LayoutController"
+	>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div 
+						class="col-md-2 col-md-offset-2 clickable"
+						ng-click="signUp()"
+					>
+						<span class="footerLink">
+							Create Account
+						</span>
+					</div>
+					<div 
+						class="col-md-2 clickable"
+						ng-click="support()"
+					>
+						<span class="footerLink">
+							Support
+						</span>
+					</div>
+					<div 
+						class="col-md-2 clickable"
+						ng-click="status()"
+					>
+						<span class="footerLink">
+							Order Status
+						</span>
+					</div>
+					<div 
+						class="col-md-2 clickable"
+						ng-click="contact()"
+					>
+						<span class="footerLink">
+							Contact
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Hack for ensuring event-based services are instantiated -->
+<div ng-controller="LoadServices" style="display:none;" aria-hidden="true"></div>
+
