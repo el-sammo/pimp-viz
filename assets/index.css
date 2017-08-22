@@ -396,11 +396,11 @@ body {
 
 #regionShowDetails {
 	top: 120px;
-	left: 277px;
-	width: 300px;
+	left: 177px;
+	width: 500px;
 	height: 294px;
 	border: 1px solid black;
-	background: rgba(54, 25, 25, .7);
+	background: rgba(54, 25, 25, .8);
 	z-index: 99;
 	position: absolute;
 }
