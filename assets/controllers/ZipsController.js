@@ -33,6 +33,7 @@
 	) {
 
 		// variable declarations
+		$scope.showRegionDetails = false;
 		
 		$scope.subs = [];
 
@@ -72,14 +73,16 @@
 				subscriberMgmt.getSubscribersByRegion(region).then(function(regionSubs) {
 					var regionCount = regionSubs.length;
 					$scope.regionsData[region] = regionCount;
-console.log('$scope.regionsData:');
-console.log($scope.regionsData);
 				});
 			});
 		});
 
 		$scope.showRegion = function(region) {
-console.log('showRegion() called with '+region);
+			$scope.showRegionDetails = true;
+			$scope.regionName = region;
+			subscriberMgmt.getSubscribersByRegion(region).then(function(regionSubscribers) {
+				$scope.regionSubscribersCount = regionSubscribers.length;
+			});
 		}
 
 	}

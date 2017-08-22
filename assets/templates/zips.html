@@ -407,6 +407,30 @@
 									{{regionsData['Wyoming']}}
 								</span>
 							</div>
+							<div 
+								id="regionShowDetails"
+								ng-if="showRegionDetails"
+								ng-cloak
+							>
+								<div class="row">
+									<div class="col-md-10 col-md-offset-1">
+										<div class="row">
+											<div class="col-md-6 col-md-offset-2">
+												<span class="showRegionHead">
+													{{regionName}}
+												</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-md-offset-2">
+												<span class="showRegionDetails">
+													{{regionSubscribersCount}}
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
