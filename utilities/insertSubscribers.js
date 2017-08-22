@@ -27539,8 +27539,21 @@ var subscribers = [
 function insertSubscribers(subscribers) {
 	db = new Mongo().getDB('pimp');
 
+	var counter = 0;
 	subscribers.forEach(function(subscriber) {
-print(subscriber.fName);
+		if(
+			subscriber.address_1 && 
+			subscriber.city && 
+			subscriber.region && 
+			subscriber.zip &&
+			subscriber.country
+		) {
+			subscriber.qualified = true;
+		} else {
+			subscriber.qualified = false;
+		}
+		counter ++;
+print(counter);
 		db.subscribers.insert(
 			subscriber
 		);

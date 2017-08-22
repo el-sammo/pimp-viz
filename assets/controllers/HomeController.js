@@ -8,6 +8,17 @@ var app = angular.module('app');
 ///
 
 app.controller('HomeController', controller);
+	
+app.config(config);
+
+config.$inject = [
+	'httpInterceptorProvider'
+];
+
+function config(httpInterceptorProvider) {
+	httpInterceptorProvider.register(/^\/zips/);
+}
+
 
 controller.$inject = [
 	'$scope', '$http', '$routeParams', '$rootScope', '$location', 
