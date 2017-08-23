@@ -21,6 +21,7 @@
 		var getAllSubscribersPromise;
 		var getSubscriberRegionsPromise;
 		var getSubscribersByRegionPromise;
+		var getRegionCitiesPromise;
 
 		var service = {
 			getSubscriber: function(subscriberId) {
@@ -60,6 +61,19 @@
 				});
 
 				return getSubscriberRegionsPromise;
+			},
+
+			getRegionCities: function(region) {
+				var url = '/subscribers/getCitiesByRegion/' + region;
+				getRegionCitiesPromise = $http.get(url).then(function(res) {
+					return res.data;
+				}).catch(function(err) {
+					console.log('GET ' + url + ': ajax failed');
+					console.error(err);
+					return $q.reject(err);
+				});
+
+				return getRegionCitiesPromise;
 			},
 
 			getSubscribersByRegion: function(region) {

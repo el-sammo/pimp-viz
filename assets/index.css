@@ -417,6 +417,12 @@ body {
 	color: white;
 }
 
+#regionCitiesList {
+	height: 172px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 input[type=checkbox] {
 	margin-left: 1px;
 	margin-right: 1px;

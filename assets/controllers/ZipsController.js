@@ -92,6 +92,66 @@
 
 		regionMedianHouseholdIncomeMap['United States'] = "$55,775";
 		
+
+
+		var regionPerCapitaIncomeMap = [];
+		regionPerCapitaIncomeMap['Alabama'] = "$23,606";
+		regionPerCapitaIncomeMap['Alaska'] = "$33,062";
+		regionPerCapitaIncomeMap['Arizona'] = "$25,715";
+		regionPerCapitaIncomeMap['Arkansas'] = "$22,883";
+		regionPerCapitaIncomeMap['California'] = "$30,441";
+		regionPerCapitaIncomeMap['Colorado'] = "$32,357";
+		regionPerCapitaIncomeMap['Connecticut'] = "$39,373";
+		regionPerCapitaIncomeMap['Delaware'] = "$30,488";
+		regionPerCapitaIncomeMap['Florida'] = "$26,582";
+		regionPerCapitaIncomeMap['Georgia'] = "$25,615";
+		regionPerCapitaIncomeMap['Hawaii'] = "$29,736";
+		regionPerCapitaIncomeMap['Idaho'] = "$23,938";
+		regionPerCapitaIncomeMap['Illinois'] = "$30,417";
+		regionPerCapitaIncomeMap['Indiana'] = "$25,140";
+		regionPerCapitaIncomeMap['Iowa'] = "$28,361";
+		regionPerCapitaIncomeMap['Kansas'] = "$27,870";
+		regionPerCapitaIncomeMap['Kentucky'] = "$23,684";
+		regionPerCapitaIncomeMap['Louisiana'] = "$24,800";
+		regionPerCapitaIncomeMap['Maine'] = "$27,978";
+		regionPerCapitaIncomeMap['Maryland'] = "$36,338";
+		regionPerCapitaIncomeMap['Massachusetts'] = "$36,593";
+		regionPerCapitaIncomeMap['Michigan'] = "$26,613";
+		regionPerCapitaIncomeMap['Minnesota'] = "$32,638";
+		regionPerCapitaIncomeMap['Mississippi'] = "$21,036";
+		regionPerCapitaIncomeMap['Missouri'] = "$26,126";
+		regionPerCapitaIncomeMap['Montana'] = "$25,989";
+		regionPerCapitaIncomeMap['Nebraska'] = "$27,446";
+		regionPerCapitaIncomeMap['Nevada'] = "$25,773";
+		regionPerCapitaIncomeMap['New Hampshire'] = "$34,691";
+		regionPerCapitaIncomeMap['New Jersey'] = "$37,288";
+		regionPerCapitaIncomeMap['New Mexico'] = "$23,683";
+		regionPerCapitaIncomeMap['New York'] = "$33,095";
+		regionPerCapitaIncomeMap['North Carolina'] = "$25,774";
+		regionPerCapitaIncomeMap['North Dakota'] = "$33,071";
+		regionPerCapitaIncomeMap['Ohio'] = "$26,937";
+		regionPerCapitaIncomeMap['Oklahoma'] = "$25,229";
+		regionPerCapitaIncomeMap['Oregon'] = "$27,646";
+		regionPerCapitaIncomeMap['Pennsylvania'] = "$29,220";
+		regionPerCapitaIncomeMap['Rhode Island'] = "$30,830";
+		regionPerCapitaIncomeMap['South Carolina'] = "$24,596";
+		regionPerCapitaIncomeMap['South Dakota'] = "$26,959";
+		regionPerCapitaIncomeMap['Tennessee'] = "$24,922";
+		regionPerCapitaIncomeMap['Texas'] = "$27,125";
+		regionPerCapitaIncomeMap['Utah'] = "$24,877";
+		regionPerCapitaIncomeMap['Vermont'] = "$29,178";
+		regionPerCapitaIncomeMap['Virginia'] = "$34,052";
+		regionPerCapitaIncomeMap['Washington'] = "$31,841";
+		regionPerCapitaIncomeMap['West Virginia'] = "$22,714";
+		regionPerCapitaIncomeMap['Wisconsin'] = "$28,213";
+		regionPerCapitaIncomeMap['Wyoming'] = "$29,698";
+
+		regionPerCapitaIncomeMap['District of Columbia'] = "$45,877";
+		regionPerCapitaIncomeMap['Puerto Rico'] = "$11,241";
+
+		regionPerCapitaIncomeMap['United States'] = "$28,889";
+
+
 		$scope.subs = [];
 
 //		subscriberMgmt.getAllSubscribers().then(function(subscribers) {
@@ -140,7 +200,30 @@
 			subscriberMgmt.getSubscribersByRegion(region).then(function(regionSubscribers) {
 				$scope.regionSubscribersCount = regionSubscribers.length;
 				$scope.regionMedianHouseholdIncome = regionMedianHouseholdIncomeMap[region];
+				$scope.regionPerCapitaIncome = regionPerCapitaIncomeMap[region];
+
+				subscriberMgmt.getRegionCities(region).then(function(regionCities) {
+					var sortedRegionCities = {};
+					$.map(regionCities,function(e,i) {
+						sortedRegionCities[e.city] = (sortedRegionCities[e.city] || 0) + 1;
+					});
+
+					var sortable = [];
+					for(var city in sortedRegionCities) {
+						sortable.push([city, sortedRegionCities[city]]);
+					}
+
+					sortable.sort(function(a, b) {
+						return a[1] - b[1];
+					});
+
+					$scope.regionCities = sortable.reverse();
+				});
 			});
+		}
+
+		$scope.hideRegion = function() {
+			$scope.showRegionDetails = false;
 		}
 
 	}

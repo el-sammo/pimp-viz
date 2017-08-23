@@ -134,6 +134,18 @@ console.log('allSubscribers() called');
 		});
 	},
 	
+	getCitiesByRegion: function(req, res) {
+		Subscribers.find({region: req.params.id}).sort({
+			city: 'asc', zip: 'asc', fName: 'asc', lName: 'asc'
+		}).then(function(results) {
+			res.send(JSON.stringify(results));
+		}).catch(function(err) {
+      res.json({error: 'Server error'}, 500);
+      console.error(err);
+      throw err;
+		});
+	},
+	
   datatables: function(req, res) {
     var options = req.query;
 

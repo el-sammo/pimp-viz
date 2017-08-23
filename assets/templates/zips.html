@@ -419,6 +419,12 @@
 												<span class="showRegionHead">
 													Region: {{regionName}}
 												</span>
+												<span 
+													class="showRegionHead clickable pull-right"
+													ng-click="hideRegion()"
+												>
+													X
+												</span>
 											</div>
 										</div>
 										<div class="row">
@@ -431,8 +437,51 @@
 										<div class="row">
 											<div class="col-md-12">
 												<span class="showRegionDetails">
-													Median HH Income: {{regionMedianHouseholdIncome}}
+													Median Household Income: {{regionMedianHouseholdIncome}}
 												</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<span class="showRegionDetails">
+													Per Capita Income: {{regionPerCapitaIncome}}
+												</span>
+											</div>
+										</div>
+										<br/>
+										<div 
+											id="regionCitiesList"
+											class="row"
+										>
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-6">
+														<span class="showRegionDetails">
+															City
+														</span>
+													</div>
+													<div class="col-md-6">
+														<span class="showRegionDetails">
+															Subscribers
+														</span>
+													</div>
+												</div>
+												<hr/>
+												<div 
+													class="row"
+													ng-repeat="city in regionCities"
+												>
+													<div class="col-md-6">
+														<span class="showRegionDetails">
+															{{city[0]}}
+														</span>
+													</div>
+													<div class="col-md-6">
+														<span class="showRegionDetails">
+															{{city[1]}}
+														</span>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
